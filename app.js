@@ -6,6 +6,8 @@ if (process.env.NODE_ENV !== 'production') {
 const routes = require('./routes')
 const app = express()
 require('./config/mongoose')
+
+app.use(express.static('public'))
 app.use(routes)
 // start and listen on the Express server
 app.listen(port, () => {
