@@ -1,12 +1,15 @@
 const express = require('express')
 const port = process.env.PORT||3000
+const exphbs = require('express-handlebars')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 const routes = require('./routes')
 const app = express()
 require('./config/mongoose')
-
+//express tamplate engine
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(routes)
 // start and listen on the Express server
