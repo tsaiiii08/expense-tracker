@@ -1,0 +1,59 @@
+<div class="container" style="margin-top:10vh">
+  <div class="row justify-content-md-center" style="margin-bottom:4vh;text-align:center;font-size:20px;color:gray">
+    <div class="col-3">
+      必填欄位
+    </div>
+    <div class="col-3">
+      請輸入你的支出
+    </div>
+  </div>
+  <form action="/expense/new" method="POST">
+    <div class="row justify-content-md-center" style="margin-bottom:4vh;text-align:center">
+      <div class="col-3" style="font-size:20px">
+        <label for="name" class="col-form-label fs-3" >名稱</label>
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+          <input type="text" id="name" placeholder="name" name="name" style="margin:auto; width:216px; height:37.7px; border:var(--bs-border-width) solid var(--bs-border-color);border-radius:var(--bs-border-radius)">
+      </div>
+    </div>
+    <div class="row justify-content-md-center" style="margin-bottom:4vh;text-align:center">
+      <div class="col-3" style="font-size:20px">
+        <label for="date" class="col-form-label fs-3">日期</label>
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <input type="date" id="date" name="date" class="form-control" style="margin:auto">
+      </div>
+    </div>
+    <div class="row justify-content-md-center" style="margin-bottom:4vh;text-align:center">
+      <div class="col-3" style="font-size:20px">
+        <label for="category" class="col-form-label fs-3">類別</label>
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <select class="form-select" id="category" name="category"style="margin:auto">
+          <option disabled selected>選擇一個類別</option>
+          <option value="家居物業">家居物業</option>
+          <option value="交通出行">交通出行</option>
+          <option value="休閒娛樂">休閒娛樂</option>
+          <option value="餐飲食品">餐飲食品</option>
+          <option value="其他">其他</option>
+        </select>
+      </div>
+    </div>
+    <div class="row justify-content-md-center" style="margin-bottom:4vh;text-align:center">
+      <div class="col-3" style="font-size:20px">
+        <label for="amount" class="col-form-label fs-3 ">金額</label>
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <input type="text" id="amount" placeholder="amount" name="amount" class="rounded" style="margin:auto; width:216px; height:37.7px; border:var(--bs-border-width) solid var(--bs-border-color);border-radius:var(--bs-border-radius)">
+      </div>
+    </div>
+    <div class="row justify-content-md-center" style="margin-bottom:4vh;text-align:center">
+      <div class="col-3">
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-primary btn-lg mt-3">新增支出</button>
+      </div>
+    </div>
+  </form>
+</div>
+
