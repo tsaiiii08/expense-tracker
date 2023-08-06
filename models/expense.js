@@ -9,10 +9,6 @@ const expenseSchema = new Schema({
     default: Date.now,
     required: true
   },
-  password: {
-    type: String,
-    required: true
-  },
   category:{
     type: String,
     required: true
