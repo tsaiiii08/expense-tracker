@@ -1,6 +1,7 @@
 const express = require('express')
 const port = process.env.PORT||3000
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -13,6 +14,7 @@ app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true })) 
+app.use(methodOverride('_method'))
 app.use(routes)
 // start and listen on the Express server
 app.listen(port, () => {
