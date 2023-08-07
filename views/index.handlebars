@@ -32,7 +32,9 @@
       </div>
       <div class="d-inline-flex justify-content-center align-items-center" style="margin-left:20px">
         <a href="/expense/edit/{{this._id}}" style="margin-right:10px;text-decoration:none;font-size:20px">修改</a>
-        <a href="/expense/delete/{{this._id}}" style="text-decoration:none;font-size:20px">刪除</a>
+        <form action="/expense/{{ this._id }}?_method=DELETE" method="POST" style="margin-left:20px">
+          <button class="btn" type="submit" style="background-color:rgb(173, 213, 173); font-size:20px">刪除</button>
+        </form>
       </div>
     </div>
   </div>

@@ -30,4 +30,11 @@ router.put('/:id', async (req, res) => {
   res.redirect('/')
 })
 
+//刪除一筆支出紀錄
+router.delete('/:id', async (req, res) => {
+  const id = req.params.id
+  await Expense.findOneAndRemove({ _id: id })
+  res.redirect('/')
+})
+
 module.exports = router
