@@ -4,14 +4,19 @@
       類別
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">家居物業</a></li>
-      <li><a class="dropdown-item" href="#">交通出行</a></li>
-      <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
-      <li><a class="dropdown-item" href="#">餐飲食品</a></li>
-      <li><a class="dropdown-item" href="#">其他</a></li>
+      <li><a class="dropdown-item" href="/">全部</a></li>
+      <li><a class="dropdown-item" href="/category/home">家居物業</a></li>
+      <li><a class="dropdown-item" href="/category/traffic">交通出行</a></li>
+      <li><a class="dropdown-item" href="/category/entertainment">休閒娛樂</a></li>
+      <li><a class="dropdown-item" href="/category/food">餐飲食品</a></li>
+      <li><a class="dropdown-item" href="/category/others">其他</a></li>
     </ul>
   </div>
-
+  {{#if categoryName}}
+  <div class="totalAmount d-flex justify-content-center" style="margin-bottom:5vh;width:30vw">
+    <h5>{{categoryName}}</h5>
+  </div>
+  {{/if}}
   <div class="totalAmount d-inline-flex justify-content-between" style="margin-bottom:5vh;width:30vw">
     <h4>總金額</h4>
     <h1 style="color:orange">{{sum}}</h1>
