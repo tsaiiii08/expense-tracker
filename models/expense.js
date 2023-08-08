@@ -17,6 +17,12 @@ const expenseSchema = new Schema({
     type: Number,
     required: true
   },
+  userId: {  // 加入關聯設定
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    required: true
+  }
 })
 
 module.exports = mongoose.model('Expense', expenseSchema)
