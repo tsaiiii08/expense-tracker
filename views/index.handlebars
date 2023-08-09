@@ -19,7 +19,7 @@
   {{/if}}
   <div class="totalAmount d-inline-flex justify-content-between" style="margin-bottom:5vh;width:30vw">
     <h4>總金額</h4>
-    <h1 style="color:orange">{{sum}}</h1>
+    <h1 style="color:orange">{{totalAmount}}</h1>
   </div>
   
   {{#each expenses}}
@@ -36,8 +36,8 @@
         <p class="d-flex flex-column justify-content-center align-items-center" style="margin-bottom:0px" >{{this.amount}}</p>
       </div>
       <div class="d-inline-flex justify-content-center align-items-center" style="margin-left:20px">
-        <a href="/expense/edit/{{this._id}}" style="margin-right:10px;text-decoration:none;font-size:20px">修改</a>
-        <form action="/expense/{{ this._id }}?_method=DELETE" method="POST" style="margin-left:20px">
+        <a href="/expenses/edit/{{this._id}}" style="margin-right:10px;text-decoration:none;font-size:20px">修改</a>
+        <form action="/expenses/{{ this._id }}?_method=DELETE" method="POST" style="margin-left:20px">
           <button class="btn" type="submit" style="background-color:rgb(173, 213, 173); font-size:20px">刪除</button>
         </form>
       </div>
@@ -46,6 +46,6 @@
 {{/each}}
 
   <div class=" border rounded" style="margin-top:5px; padding:5px; background-color:antiquewhite">
-    <a href="/expense/new" style="text-decoration:none;font-size:24px;color:grey"> 新增支出</a>
+    <a href="/expenses/new" style="text-decoration:none;font-size:24px;color:grey"> 新增支出</a>
   </div>
 </div>

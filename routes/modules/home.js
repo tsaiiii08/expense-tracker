@@ -6,20 +6,20 @@ const Category = require('../../models/category')
 //查看所有支出紀錄
 router.get('/', async(req, res) => {
   const userId = req.user._id
-  let sum = 0
+  let totalAmount = 0
   let expenses = []
   let rawExpenses = await Expense.find({ userId }).lean()
   await Promise.all(
     rawExpenses.map(async rawExpense => {
     const categoryList = await Category.findOne({ id: rawExpense.categoryId }).lean()
-      rawExpense.icon = categoryList.icon
+    rawExpense.icon = categoryList.icon
     rawExpense.date = rawExpense.date.toJSON().slice(0, 10)
-    sum += rawExpense.amount
+    totalAmount += rawExpense.amount
     expenses.push(rawExpense)
 
     })
   )
-  res.render('index', { expenses, sum })
+  res.render('index', { expenses, totalAmount })
 })
 
 //依選擇的類別顯示支出
@@ -30,17 +30,17 @@ router.get('/category/:category', async (req, res) => {
   const categoryId = categoryArr[`${categoryEng}`]
   const categoryList = await Category.findOne({ id:categoryId }).lean()
   const categoryName = categoryList.name
-  let sum = 0
+  let totalAmount = 0
   let expenses = []
   let rawExpenses = await Expense.find({ categoryId, userId }).lean()
   rawExpenses.map(rawExpense => {
     rawExpense.icon = categoryList.icon
     rawExpense.date = rawExpense.date.toJSON().slice(0, 10)
-    sum += rawExpense.amount
+    totalAmount += rawExpense.amount
     expenses.push(rawExpense)
   })
   
-  res.render('index', { expenses, sum, categoryName })
+  res.render('index', { expenses, totalAmount, categoryName })
 
 })
 
