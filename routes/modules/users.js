@@ -36,20 +36,24 @@ router.post('/register', async(req, res) => {
       confirmPassword
     })
   }
-  // 檢查使用者是否已經註冊
-  const user =  await User.findOne({ email })
-  // 如果已經註冊：退回原本畫面
-  if (user) {
-    errors.push({ message: '這個 Email 已經註冊過了。' })
-    res.render('register', { name, email, password, confirmPassword, errors })
-  } else {
-    // 如果還沒註冊：寫入資料庫
-    const salt = await bcrypt.genSalt(10)
-    const hashPassword = await bcrypt.hash(password, salt)
-    console.log(hashPassword)
-    await User.create({name,email, password:hashPassword})
-    res.redirect('/')
+ 
+  try{
+     // 檢查使用者是否已經註冊
+    const user = await User.findOne({ email })
+    // 如果已經註冊：退回原本畫面
+    if (user) {
+      errors.push({ message: '這個 Email 已經註冊過了。' })
+      res.render('register', { name, email, password, confirmPassword, errors })
+    } else {
+      // 如果還沒註冊：寫入資料庫
+      const salt = await bcrypt.genSalt(10)
+      const hashPassword = await bcrypt.hash(password, salt)
+      await User.create({ name, email, password: hashPassword })
+      res.redirect('/')
     }
+  } catch(error){
+    console.log('error is on register')
+  }
   })
 
 router.get('/logout',  (req, res) => {
